@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+void main(void){
+	double val, ave, sum = 0.0;
+	long i;
+	for (i = 0; i < 3; i++) {
+		printf("%ld번째 값", i + 1);
+		scanf_s("%lf", &val);
+		sum = sum + val;
+	}
+	ave = sum / 3;
+	printf("평균 : %5.1f\n", ave);
+}
