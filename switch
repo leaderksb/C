@@ -1,0 +1,44 @@
+#include <stdio.h>
+void main(void)
+{
+	long sel;
+	int juice = 1000;
+	long juice_num=0;
+	int tea = 500;
+	long tea_num=0;
+	int coffee = 2000;
+	long coffee_num=0;
+
+	printf("음료수를 선택하세요.[1:주스, 2:차, 3:커피]: ");
+	scanf_s("%ld", &sel);
+
+	switch (sel)
+	{
+	case 1:
+		puts("주스를 선택 했습니다.");
+		printf("주스는 개당 %ld원 입니다.\n",juice);
+		printf("몇개를 선택 하시겠습니까? ");
+		scanf_s("%ld",&juice_num);
+		printf("%ld원을 결제하시면 주스 %ld개가 제공됩니다.\n", juice*juice_num, juice_num);
+		break;
+
+	case 2:
+		puts("차를 선택 했습니다.");
+		printf("차는 %ld원 입니다.\n", tea);
+		printf("몇개를 선택 하시겠습니까? ");
+		scanf_s("%ld", &tea_num);
+		printf("%ld원을 결제하시면 차 %ld개가 제공됩니다.\n", tea*tea_num, tea_num);
+		break;
+
+	case 3:
+		puts("커피를 선택 했습니다.");
+		printf("커피는 %ld원 입니다.\n", coffee);
+		printf("몇개를 선택 하시겠습니까? ");
+		scanf_s("%ld", &coffee_num);
+		printf("%ld원을 결제하시면 커피 %ld개가 제공됩니다.\n", coffee*coffee_num, coffee_num);
+		break;
+	
+	default: puts("판매하지 않는 음료수 입니다.");
+	}
+	
+}
