@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void main(void) {
+	long score[5] = { 550, 770, 900, 880, 650 };
+	long i, sum = 0;
+	double ave;
+
+	for (i = 0; i < 5; i++) {
+		sum = sum + score[i];
+	}
+
+	ave = sum / 5.;
+	printf("평균:%5.1lf", ave);
+}
