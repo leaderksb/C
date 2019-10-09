@@ -1,0 +1,17 @@
+#include <stdio.h>
+#define N 5
+void main(void) {
+	long val, sum = 0, i;
+	long max = -1, min = 101;
+	double ave;
+	for (i = 0; i < N; ++i) {
+		printf("점수입력(%ld):", i + 1);
+		scanf_s("%ld", &val);
+		sum = sum + val;
+		if (val >= max) max = val;
+		if (val <= min) min = val;
+	}
+	sum = sum - (max + min);
+	ave = sum / (N - 2.);
+	printf("평균:%5.1lf\n", ave);
+}
