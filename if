@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+void main(void) {
+	long su1, su2;
+
+	printf("두개중 한개의 값을 입력 해주세요:");
+	scanf_s("%ld", &su1);
+	printf("한개의 값을 추가로 입력 해주세요:");
+	scanf_s("%ld", &su2);
+
+	if (su1 > su2)
+		printf("최대값은 %ld이고, 최소값은 %ld입니다.", su1, su2);
+	else if (su2 > su1)
+		printf("최대값은 %ld이고, 최소값은 %ld입니다.", su2, su1);
+	else
+		printf("두개의 값이 모두 동일합니다.");
+}
