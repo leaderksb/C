@@ -1,0 +1,65 @@
+#include <stdio.h>
+void main(void)
+{
+
+	long a[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };//A집합
+
+	long b[] = { 1, 3, 5, 7, 9, 11, 13, 15};//B집합
+
+	long c[5];//차집합 A-B=C
+
+	long i, j, k = 0, o = 0, a_size, b_size;
+
+	a_size = sizeof(a) / sizeof(long);
+
+	b_size = sizeof(b) / sizeof(long);
+
+	for (i = 0; i < a_size; i++) {//A집합
+
+		int val = 0;
+
+		for (j = 0; j < b_size; j++) {//B집합
+
+			if (a[i] == b[j]) {//A집합과 B집합의 원소가 같다면
+
+				val = 1;
+
+				break;
+			}
+
+		}
+
+			if (val == 0) {
+
+			c[o] = a[i];
+
+			o++;
+		}
+
+	}
+
+	printf("집합 A ={");
+
+	for (i = 0; i < a_size; i++)
+
+		printf(" %ld ", a[i]);
+
+	printf("}\n");
+
+	printf("집합 B ={");
+
+	for (j = 0; j < b_size; j++)
+
+		printf(" %ld ", b[j]);
+
+	printf("}\n");
+
+	printf("차집합 C(A-B) = {");
+
+	for (i = 0; i < o; i++)
+
+		printf(" %d ", c[i]);
+
+	printf("}\n");
+
+}
