@@ -1,0 +1,112 @@
+#include <stdio.h>
+#define N 100 //한번에 주문 가능한 최대 주문수량
+
+double card(long);
+long cash(long, long);
+
+void main(void) {
+	long sel = 0, type=0, sum = 0, arr_size;
+	long arr[6] = { 0, 0, 0, 0, 0, 0 };
+	int kal = 6000, bea = 5000, fea = 4000, coo = 5000, bee = 5000, ram = 1500;
+	int kal_n = 0, bea_n = 0, fea_n = 0, coo_n = 0, bee_n = 0, ram_n = 0;
+	int i = 0, j = 0, money = 0, change = 0, zero = 0;
+
+	arr_size = sizeof(arr) / sizeof(long);
+
+		if (sel >= 0 && sel < 7)
+		{
+			for (i = 0; i < N; i++)
+			{
+				printf("\n[주문하실 메뉴를 선택하세요 ^^]\n");
+				printf("\n<1번>칼국수:6000원\n<2번>콩국수:5000원\n<3번>잔치국수:4000원\n<4번>냉면:5000원\n<5번>비빔냉면:5000원\n<6번>라면:1500원\n<7번>결제하기\n\n");
+				printf("주문번호:");
+				scanf_s("%d", &sel);
+				switch (sel) {
+				case 1:
+					puts("칼국수를 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &kal_n);
+					arr[0] += kal * kal_n;
+					break;
+				case 2:
+					puts("콩국수를 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &bea_n);
+					arr[1] += bea * bea_n;
+					break;
+				case 3:
+					puts("잔치국수를 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &fea_n);
+					arr[2] += fea * fea_n;
+					break;
+				case 4:
+					puts("냉면을 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &coo_n);
+					arr[3] += coo * coo_n;
+					break;
+				case 5:
+					puts("비빔냉면을 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &bee_n);
+					arr[4] += bee * bee_n;
+					break;
+				case 6:
+					puts("라면을 선택하셨습니다.");
+					printf("몇개를 주문하시겠습니까:");
+					scanf_s("%d", &ram_n);
+					arr[5] += ram * ram_n;
+					break;
+				case 7:
+					puts("주문이 완료되었습니다.");
+					for (j = 0; j < arr_size; j++)
+						sum += arr[j]; //sum은 총결제금액이다
+					printf("\n<주문정보>\n결제금액:%ld\n", sum);
+					printf("\n[결제방식을 선택하세요 ^^]\n<1번>카드\n<2번>체크카드(0.05%할인)\n<3번>현금");
+					printf("\n결제번호:");
+					scanf_s("%d", &type);
+					switch (type)
+					{
+						case 1:
+							printf("지불금액:%d\n", sum);
+							printf("카드결제가 완료되었습니다.\n");
+							break;
+
+						case 2:
+							zero = card(sum);
+							printf("지불금액:%d\n", zero);
+							printf("체크카드결제가 완료되었습니다.\n");
+							break;
+
+						case 3:
+							printf("결제금액을 입금해주세요:");
+							scanf_s("%d", &money);
+							change = cash(money, sum);
+							printf("지불금액:%d\n", money);
+							printf("거스름돈:%d\n", change);
+							printf("현금결제가 완료되었습니다.\n");
+							break;
+
+					default: puts("[잘못 선택하셨습니다.]");
+						break;
+					}
+				}
+				if (sel == 7) return 0;
+			}
+		}
+	}
+
+double card(long a)
+{
+	double pay;
+	pay = a - (a*0.05);
+	return pay;
+}
+
+long cash(long a, long b)
+{
+	long pay;
+	pay = a - b;
+	return pay;
+}
